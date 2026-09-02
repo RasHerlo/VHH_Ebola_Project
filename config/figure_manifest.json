@@ -1,0 +1,128 @@
+{
+  "scope": "Paper Figure 5 (LLSM cell-binding / internalization) and associated supplementary (in-vitro SDCM calibrations + localization summaries).",
+  "numbering_note": "The 2022 figure-file folders are labeled Fig 1A–J. In the 2023 paper draft that same figure is Figure 5. This repo uses paper numbering.",
+  "figures": {
+    "fig5": {
+      "id": "fig5",
+      "title": "G10 blocks cell binding and alters localization",
+      "story": "Three points from the 19 Aug 2026 notes: G10 occupancy reduces cell binding; G84 occupancy enriches internalized clusters; AP2-association does not differ between the two VHHs (not a pathway shift). See docs/meetings/260819.md.",
+      "layout": [["A", "B"], ["C", "D"], ["E", "F"], ["G", "H"], ["I", "J"]],
+      "assemble": "src/matlab/+ebola_vhh/+fig5/assemble.m",
+      "panels": {
+        "A": {
+          "title": "AP2-RFP cell, no virus",
+          "claim": "AP2-RFP clusters define the cell surface used for later reconstruction; cluster intensities span about an order of magnitude.",
+          "legacy_folder": "Fig 1A Ex01_MOI",
+          "subparts": ["mip", "cell_shape", "ap2_dist"],
+          "call": "ebola_vhh.fig5.A"
+        },
+        "B": {
+          "title": "No-VHH VSV on an AP2-RFP cell",
+          "claim": "Without VHH, MeGFP-VSV-EBOV binds the reconstructed cell surface. Green = virus, red = AP2.",
+          "legacy_folder": "Fig 1B Ex15_NoVHH",
+          "subparts": ["mip", "cell_shape"],
+          "call": "ebola_vhh.fig5.B"
+        },
+        "C": {
+          "title": "G84-bound virions on cell",
+          "claim": "G84-AF647 still allows cell binding; zooms show surface vs internalized examples.",
+          "legacy_folder": "Fig 1C Ex7 G84",
+          "subparts": ["full_view", "side_view", "int_zoom"],
+          "call": "ebola_vhh.fig5.C",
+          "open_items": ["Zoom captions still TBD in the draft."]
+        },
+        "D": {
+          "title": "G10-bound virions on cell",
+          "claim": "G10-AF647 produces more off-cell (precipitated) particles; zooms show precipitation vs surface events.",
+          "legacy_folder": "Fig 1D Ex11 G10",
+          "subparts": ["full_view", "side_view", "precip_zoom"],
+          "call": "ebola_vhh.fig5.D",
+          "open_items": ["Zoom captions still TBD in the draft."]
+        },
+        "E": {
+          "title": "G10 CFD: cell binding",
+          "claim": "More G10 per virion correlates with less cell association.",
+          "legacy_folder": "Fig 1E ecdf G10 CellBind",
+          "subparts": ["cfd"],
+          "call": "ebola_vhh.fig5.E"
+        },
+        "F": {
+          "title": "G84 CFD: cell binding",
+          "claim": "G84 occupancy does not reduce cell association the way G10 does.",
+          "legacy_folder": "Fig 1F ecdf G84 CellBind",
+          "subparts": ["cfd"],
+          "call": "ebola_vhh.fig5.F"
+        },
+        "G": {
+          "title": "G10 CFD: AP2 association",
+          "claim": "G10 occupancy increases AP2 association of cell-bound virions; the effect is not different from G84 (not a pathway shift).",
+          "legacy_folder": "Fig 1G ecdf G10 AP2ass",
+          "subparts": ["cfd"],
+          "call": "ebola_vhh.fig5.G"
+        },
+        "H": {
+          "title": "G84 CFD: AP2 association",
+          "claim": "G84 occupancy increases AP2 association similarly to G10; the two VHHs do not differ here.",
+          "legacy_folder": "Fig 1H ecdf G84 APass",
+          "subparts": ["cfd"],
+          "call": "ebola_vhh.fig5.H"
+        },
+        "I": {
+          "title": "G10 CFD: internalization",
+          "claim": "Virions with high G10 occupancy are less likely to be found inside the cell.",
+          "legacy_folder": "Fig 1I ecdf G10 Int",
+          "subparts": ["cfd"],
+          "call": "ebola_vhh.fig5.I"
+        },
+        "J": {
+          "title": "G84 CFD: internalization",
+          "claim": "Virions with high G84 occupancy are still able to bind and are more likely to be found in internalized clusters.",
+          "legacy_folder": "Fig 1J ecdf G84 Int",
+          "subparts": ["cfd"],
+          "call": "ebola_vhh.fig5.J"
+        }
+      },
+      "open_items": [
+        "Kolmogorov–Smirnov tests on CFD differences (suggested 260819; never added in 2022).",
+        "Panel A–D zoom insets and some caption clauses are still TBD.",
+        "Does G10 prevent binding, or bind-then-block internalization? E–F argue binding. Dual-mode (low occupancy vs loads) still open.",
+        "S3B: is off-cell precipitation increased, and does virion amount matter?",
+        "S3C / G–H: number dependence of AP2 association; capture vs recycling?"
+      ]
+    },
+    "s3": {
+      "id": "s3",
+      "title": "Single-molecule calibration and localization summaries",
+      "story": "Before the cell experiment, SDCM on glass calibrates MeGFP-VSV intensity and converts AF647 signal to VHH copies per virion at 44 nM. A third panel summarizes off-cell precipitation and AP2 association with vs without VHH.",
+      "layout": [["A", "B"], ["C"]],
+      "assemble": "src/matlab/+ebola_vhh/+s3/assemble.m",
+      "numbering_note": "The paper Results text refers to S3A/S3B for occupancy counts. The figure-legend file (Main&Suppl_Figs_Text.docx) uses A = GFP intensity, B = VHHs per virion, C = localization summary. This repo follows the legend file.",
+      "panels": {
+        "A": {
+          "title": "MeGFP-VSV intensity on glass",
+          "claim": "VSV particles labelled on M with GFP are a reasonably homogeneous intensity population.",
+          "subparts": ["vsv_intensity"],
+          "call": "ebola_vhh.s3.A"
+        },
+        "B": {
+          "title": "VHHs per virion at 44 nM",
+          "claim": "At 44 nM, virions bind more G10 than G84, and almost no G68 (notes: ~45, ~13, ~1).",
+          "subparts": ["vhh_per_virion"],
+          "call": "ebola_vhh.s3.B"
+        },
+        "C": {
+          "title": "Precipitation and AP2 association by condition",
+          "claim": "G10 or G84 pre-incubation increases off-cell precipitation; cell-bound virus shows higher AP2 association, especially inside the cell.",
+          "subparts": ["precip_hist", "ap2_hist"],
+          "call": "ebola_vhh.s3.C"
+        }
+      }
+    }
+  },
+  "candidates": {
+    "ap2_cluster_dist": {
+      "claim": "AP2-RFP cluster intensity distribution (in-vitro / cell figure leftover; not in the draft).",
+      "call": "ebola_vhh.candidates.ap2_cluster_dist"
+    }
+  }
+}

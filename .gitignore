@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- this project ---
+config/paths.json
+output/fig5/
+output/s3/
+output/candidates/
+*.asv
+*.m~
+slprj/
+*.slxc
+Thumbs.db
+.DS_Store
+matlab.prf
+*.autosave
